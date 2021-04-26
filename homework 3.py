@@ -8,31 +8,31 @@
 # YOUR GITHUB USER NAME HERE
 
 # Due date: Sunday April 25th before midnight
-# Write your answers in the space between the questions, and commit/push only 
+# Write your answers in the space between the questions, and commit/push only
 # this file to your repo. Note that there can be a difference between giving a
-# "minimally" right answer, and a really good answer, so it can pay to put 
+# "minimally" right answer, and a really good answer, so it can pay to put
 # thought into your work.
 
 ##################
 
 # Question 1: Begin with the class below and do the following:
-#   a) Modify the what_to_watch method so that it takes an optional keyword 
-#       argument that allows the user to narrow down the random selection by 
+#   a) Modify the what_to_watch method so that it takes an optional keyword
+#       argument that allows the user to narrow down the random selection by
 #       category (e.g. select only from movies with category 'action'), but
 #       defaults to the entire list of titles as it does now.
-#   b) The what_to_watch method currently raises a ValueError if you use it 
+#   b) The what_to_watch method currently raises a ValueError if you use it
 #       before entering any movies. Modify it using try/except so that it tells
 #       the user what they did wrong instead of raising an error.
 #   c) Create a new class called InteractiveMovieDataBase that inherits MovieDataBase
 #   d) Override the add_movie method in your new class so that it takes in user
-#       input to add a title, instead of arguments
+#       input to add a title/year/category/stars, instead of arguments
 #   e) Add some appropriate error checking on the user input, so that they 
 #       can't enter something that makes no sense (e.g. title=None or year='dog')
 #   f) Add a new method to InteractiveMovieDataBase named movie_rankings, which
-#       returns a list of all the titles in the database currently, ordered 
+#       returns a list of all the titles in the database currently, ordered
 #       highest ranking to lowest
 #
-# NOTE: Your final submission should have only TWO classes: one (modified) 
+# NOTE: Your final submission should have only TWO classes: one (modified)
 #       MovieDataBase, and the new InteractiveMovieDataBase
 
 from numpy import random
@@ -42,12 +42,12 @@ class MovieDataBase():
         self.titles = []
         self.movies = {}
 
-    def add_movie(self, title, year, category, rating):
+    def add_movie(self, title, year, category, stars):
         self.titles.append(title)
-        self.movies[title] = {'year':year, 'category':category, 'rating':rating}
+        self.movies[title] = {'year':year, 'category':category, 'stars':stars}
         print(f'{title} ({year}) added to the database.')
 
     def what_to_watch(self):
         choice = random.choice(self.titles)
         movie = self.movies[choice]
-        print(f"Your movie today is {choice} ({movie['year']}), which is a {movie['category']} with a rating of: {movie['rating']}")
+        print(f"Your movie today is {choice} ({movie['year']}), which is a {movie['category']}, and was given {movie['stars']} stars.")
