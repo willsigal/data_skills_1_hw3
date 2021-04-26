@@ -24,9 +24,10 @@
 #       before entering any movies. Modify it using try/except so that it tells
 #       the user what they did wrong instead of raising an error.
 #   c) Create a new class called InteractiveMovieDataBase that inherits MovieDataBase
-#   d) Override the add_movie method in your new class so that it takes in user
-#       input to add a title/year/category/stars, instead of arguments
-#   e) Add some appropriate error checking on the user input, so that they 
+#   d) Override the add_movie method in your new class so that if it is called
+#       without arguments, it instead asks for user input to add a title/year/
+#       category/stars, but if it is called with arguments it behaves as before
+#   e) Add some appropriate error checking on the user input, so that they
 #       can't enter something that makes no sense (e.g. title=None or year='dog')
 #   f) Add a new method to InteractiveMovieDataBase named movie_rankings, which
 #       returns a list of all the titles in the database currently, ordered
