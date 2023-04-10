@@ -1,5 +1,5 @@
 # PPHA 30535
-# Spring 2021
+# Spring 2023
 # Homework 3
 
 # YOUR NAME HERE
@@ -7,7 +7,7 @@
 # YOUR CANVAS NAME HERE
 # YOUR GITHUB USER NAME HERE
 
-# Due date: Sunday April 24th before midnight
+# Due date: Sunday April 16th before midnight
 # Write your answers in the space between the questions, and commit/push only
 # this file to your repo. Note that there can be a difference between giving a
 # "minimally" right answer, and a really good answer, so it can pay to put
@@ -26,7 +26,7 @@
 #   c) Create a new class called InteractiveMovieDataBase that inherits MovieDataBase.
 #   d) Override the add_movie method in your new class so that if it is called
 #       without arguments, it instead asks for user input to add a title/year/
-#       category/stars, but if it is called with arguments it behaves as before
+#       category/rating/stars, but if it is called with arguments it behaves as before
 #   e) Add some appropriate error checking to InteractiveMovieDatabase on the user 
 #       input, so that they can't enter something that makes no sense (e.g. title=None
 #       or year='dog')
@@ -44,12 +44,12 @@ class MovieDataBase():
         self.titles = []
         self.movies = {}
 
-    def add_movie(self, title, year, category, stars):
+    def add_movie(self, title, year, category, rating, num_stars):
         self.titles.append(title)
-        self.movies[title] = {'year':year, 'category':category, 'stars':stars}
+        self.movies[title] = {'year':year, 'category':category, 'rating':rating, 'stars':num_stars}
         print(f'{title} ({year}) added to the database.')
 
     def what_to_watch(self):
         choice = random.choice(self.titles)
         movie = self.movies[choice]
-        print(f"Your movie today is {choice} ({movie['year']}), which is a {movie['category']}, and was given {movie['stars']} stars.")
+        print(f"Your movie today is {choice} ({movie['year']}), which is a {movie['rating']}-rated {movie['category']}, and was given {movie['stars']} stars.")
